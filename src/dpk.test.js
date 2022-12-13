@@ -94,6 +94,12 @@ describe("deterministicPartitionKey", () => {
     expect(trivialKey).toBe(String(partitionKey));
   });
 
+  it("Returns a stringfied number when given an object with a 'partitionKey' key containing a bigint", () => {
+    const partitionKey = 999999999999999999999999999n;
+    const trivialKey = deterministicPartitionKey({ partitionKey });
+    expect(trivialKey).toBe(String(partitionKey));
+  });
+
   it("Returns a hash when given an object with a 'partitionKey' key containing a big number", () => {
     const partitionKey = 'c1802e6b9670927ebfddb7f67b3824642237361f07db35526c42c555ffd2dbe74156c366e1550ef8c0508a6cc796409a7194a59bba4d300a6182b483d315a862c1802e6b9670927ebfddb7f67b3824642237361f07db35526c42c555ffd2dbe74156c366e1550ef8c0508a6cc796409a7194a59bba4d300a6182b483d315a862c1802e6b9670927ebfddb7f67b3824642237361f07db35526c42c555ffd2dbe74156c366e1550ef8c0508a6cc796409a7194a59bba4d300a6182b483d315a862';
     const trivialKey = deterministicPartitionKey({ partitionKey });
